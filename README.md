@@ -1,14 +1,30 @@
 # Liquid Glass Luau
 
-A beautiful frosted glass UI library for Roblox Luau. Inspired by Apple's Liquid Glass design.
+A comprehensive frosted glass UI library for Roblox Luau. Inspired by Apple's Liquid Glass design.
 
 ![Liquid Glass Demo](https://raw.githubusercontent.com/rdev/liquid-glass-react/master/assets/project-liquid.gif)
+
+## Two Versions Available
+
+### LiquidGlass (Basic) - 925 lines
+Simple and lightweight version with essential glass effects.
+
+### LiquidGlass Pro - 6,193 lines
+Full-featured version with all visual effects:
+- **Chromatic Aberration** - RGB edge separation like real glass
+- **Edge Refraction** - Light bending at edges
+- **Dynamic Borders** - Gradient that follows mouse cursor
+- **Spring Physics** - Smooth elastic animations
+- **Frost Simulation** - Multi-layer glass depth
+- **And much more...**
 
 ## Features
 
 - **Frosted Glass Effect** - Semi-transparent blur simulation
-- **Reflective Borders** - Gradient borders that respond to mouse position
-- **Elastic Animations** - Subtle movement toward cursor for liquid feel
+- **Chromatic Aberration** - RGB channel separation at edges (Pro)
+- **Edge Refraction** - Light bending simulation (Pro)
+- **Reflective Borders** - Dynamic gradient that follows mouse position
+- **Elastic Animations** - Spring physics for liquid feel
 - **Hover Effects** - Radial highlights on hover
 - **Click Animations** - Scale-down effect on press
 - **Multiple Layers** - Shadow, glass, glow, borders for depth
@@ -18,8 +34,14 @@ A beautiful frosted glass UI library for Roblox Luau. Inspired by Apple's Liquid
 
 ### For Roblox Executors
 
+**Basic Version:**
 ```lua
 local LiquidGlass = loadstring(game:HttpGet("https://raw.githubusercontent.com/alexkkork/liquid-glass-luau/main/LiquidGlass.luau"))()
+```
+
+**Pro Version (Full Effects):**
+```lua
+local LiquidGlass = loadstring(game:HttpGet("https://raw.githubusercontent.com/alexkkork/liquid-glass-luau/main/LiquidGlassPro.luau"))()
 ```
 
 ### Manual Installation
@@ -158,6 +180,66 @@ local status = LiquidGlass.new({
     Elasticity = 0.05,
     HoverHighlight = false,
 })
+```
+
+## Pro Version Examples
+
+### Full Effects Button
+```lua
+local LiquidGlass = loadstring(game:HttpGet("https://raw.githubusercontent.com/alexkkork/liquid-glass-luau/main/LiquidGlassPro.luau"))()
+
+local glass = LiquidGlass.new({
+    Size = UDim2.new(0, 220, 0, 56),
+    Position = UDim2.new(0.5, 0, 0.5, 0),
+    Parent = screenGui,
+    CornerRadius = 28,
+    
+    Chromatic = {
+        Enabled = true,
+        Intensity = 0.8,
+    },
+    
+    Refraction = {
+        Enabled = true,
+        EdgeWidth = 8,
+    },
+    
+    Border = {
+        GradientEnabled = true,
+        MouseResponsive = true,
+    },
+    
+    Interaction = {
+        Elasticity = 0.25,
+    },
+    
+    onClick = function() print("Clicked!") end,
+})
+```
+
+### Factory Methods (Pro)
+```lua
+-- Quick button creation
+local button = LiquidGlass.CreateButton("Submit", function() end)
+
+-- Card preset
+local card = LiquidGlass.CreateCard({ Size = UDim2.fromOffset(300, 200) })
+
+-- Pill badge
+local pill = LiquidGlass.CreatePill("Premium")
+
+-- Status indicator
+local badge = LiquidGlass.CreateStatusBadge("Online", Color3.fromRGB(100, 255, 150))
+```
+
+## Run Examples
+
+```lua
+-- Basic Example
+loadstring(game:HttpGet("https://raw.githubusercontent.com/alexkkork/liquid-glass-luau/main/LiquidGlassExample.luau"))()
+
+-- Pro Example (Full Effects)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/alexkkork/liquid-glass-luau/main/LiquidGlassProExample.luau"))()
 ```
 
 ## Credits
